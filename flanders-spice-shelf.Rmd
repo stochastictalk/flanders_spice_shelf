@@ -1,17 +1,17 @@
 ---
-title: "Flanders Spice Shelf"
-author: "Jerome Wynne"
-date: "04/07/2021"
+title: ""
 output: html_document
 ---
+
+# Flanders Spice Shelf `r emo::ji("fire")` `r emo::ji("cook")` `r emo::ji("star-struck")`
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE,  warning=FALSE, message=FALSE)
 ```
 
-# Source Data
+### Source Data `r emo::ji("books")`
 
-```{r, include=TRUE}
+```{r, include=TRUE, figure.width=800}
 library(tidyverse)
 library(DT)
 
@@ -20,9 +20,13 @@ df <- readr::read_csv("flanders-spice-shelf.csv") %>%
 
 DT::datatable(df)
 ```
-# Which initial letter is most popular?
+<br>
 
-```{r, echo=FALSE, fig.width=7, fig.height=4}
+### Initial Letter Popularity `r emo::ji("smiling face with sunglasses")`
+
+```{r, echo=FALSE, fig.align='center', fig.width=7, fig.height=4}
+#devtools::install_github("hadley/emo")
+library(emo)
 library(viridis)
 
 summarise_initial_count <- function(df) {
@@ -35,9 +39,12 @@ summarise_initial_count <- function(df) {
     rename(`Count of items`=`n`)
 }
 
-df %>%
+df_i <- df %>%
   summarise_initial_count() %>%
   mutate(`Proportion of items` = `Count of items`/sum(`Count of items`)) %>%
+  mutate(`% of items` = round(`Proportion of items`*100, 0))
+
+df_i %>%
   ggplot(
     aes(
       x = `Proportion of items`,
@@ -49,4 +56,17 @@ df %>%
   scale_y_discrete(limits = rev) +
   scale_fill_viridis() +
   theme_minimal()
+```
+```{r, include=TRUE}
+DT::datatable(df_i)
+```
+<br>
+
+### Emoji Search Engine `r emo::ji("magnifying glass tilted left")`
+<br>
+```{r}
+DT::datatable(
+  emo::jis,
+  fillContainer = TRUE
+)
 ```
