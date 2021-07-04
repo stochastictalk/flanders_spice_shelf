@@ -6,25 +6,47 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE,  warning=FALSE, message=FALSE)
 ```
 
-## R Markdown
+# Source Data
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r, include=TRUE}
+library(tidyverse)
+library(DT)
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+df <- readr::read_csv("flanders-spice-shelf.csv") %>%
+  mutate(Initial = stringr::str_sub(Item, 1, 1))
 
-```{r cars}
-summary(cars)
+DT::datatable(df)
 ```
+# Which initial letter is most popular?
 
-## Including Plots
+```{r, echo=FALSE, fig.width=7, fig.height=4}
+library(viridis)
 
-You can also embed plots, for example:
+summarise_initial_count <- function(df) {
+  df_result <- dplyr::left_join(
+    tibble(`Initial` = stringr::str_split("ABCDEFGHIJKLMNOPQRSTUVWXYZ", "")[[1]]),
+    df %>% group_by(Initial) %>% count, 
+    by="Initial"
+    ) %>%
+    tidyr::replace_na(list(Initial = NA, n = 0)) %>%
+    rename(`Count of items`=`n`)
+}
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+df %>%
+  summarise_initial_count() %>%
+  mutate(`Proportion of items` = `Count of items`/sum(`Count of items`)) %>%
+  ggplot(
+    aes(
+      x = `Proportion of items`,
+      y = Initial,
+      fill = `Proportion of items`
+      )
+    ) +
+  geom_col() +
+  scale_y_discrete(limits = rev) +
+  scale_fill_viridis() +
+  theme_minimal()
 ```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

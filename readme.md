@@ -2,7 +2,7 @@
 
 Created: 4th July 2021
 
-[Analysis](https://htmlpreview.github.io/?https://github.com/stochastictalk/flanders_spice_shelf/blob/master/flanders-spice-shelf.html)
+[Insights](https://htmlpreview.github.io/?https://github.com/stochastictalk/flanders_spice_shelf/blob/master/flanders-spice-shelf.html)
 
 ## Data Dictionary
 
