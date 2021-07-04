@@ -72,3 +72,9 @@ DT::datatable(
   fillContainer = TRUE
 )
 ```
+
+
+Allocating Shelf Real Estate
+
+```{r}
+
