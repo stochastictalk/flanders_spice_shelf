@@ -15,3 +15,7 @@ State | Physical state of product.
 ## Key insight
 
 ![Spice shelf histogram](https://github.com/stochastictalk/flanders_spice_shelf/blob/master/item-histogram.png)
+
+## Recommendations
+
+Allocate loads of shelf space to the big-hitters - seasonings and sauces that begin with B, C, M, and S.
