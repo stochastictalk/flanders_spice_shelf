@@ -58,6 +58,8 @@ df_i %>%
   scale_y_discrete(limits = rev) +
   scale_fill_viridis() +
   theme_minimal()
+
+ggsave("item-histogram.png", device="png")
 ```
 ```{r, include=TRUE}
 DT::datatable(df_i)
