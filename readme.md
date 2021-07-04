@@ -14,6 +14,8 @@ State | Physical state of product.
 
 ## Key insight
 
+_102 items_
+
 ![Spice shelf histogram](https://github.com/stochastictalk/flanders_spice_shelf/blob/master/item-histogram.png)
 
 ## Recommendations
