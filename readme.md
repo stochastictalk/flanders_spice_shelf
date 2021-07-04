@@ -14,4 +14,4 @@ State | Physical state of product.
 
 ## Key insight
 
-![Spice shelf histogram]("https://github.com/stochastictalk/flanders_spice_shelf/item-histogram.png)
+![Spice shelf histogram](https://github.com/stochastictalk/flanders_spice_shelf/item-histogram.png)
