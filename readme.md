@@ -2,6 +2,8 @@
 
 Created: 4th July 2021
 
+[https://htmlpreview.github.io/?https://github.com/stochastictalk/flanders_spice_shelf/blob/master/flanders-spice-shelf.html](Notebook)
+
 ## Data Dictionary
 
 Attribute | Definition
