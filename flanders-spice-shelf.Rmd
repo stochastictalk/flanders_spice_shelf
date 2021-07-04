@@ -76,7 +76,16 @@ DT::datatable(
 ```
 
 
-Allocating Shelf Real Estate
+### Allocating Shelf Real Estate
 
 ```{r}
 
+shelf_length_cm <- 84*2 # leave 8cm for letters that have a count of 1 or 0
+
+df_i %>%
+  filter(`Count of items` > 1) %>%
+  mutate(
+    `Allocated length` = `Proportion of items`*shelf_length_cm
+  )
+
+```
