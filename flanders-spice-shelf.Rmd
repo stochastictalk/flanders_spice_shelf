@@ -56,8 +56,10 @@ df_i %>%
     ) +
   geom_col() +
   scale_y_discrete(limits = rev) +
+  scale_x_continuous(breaks = seq(0, 0.3, by = 0.02)) +
   scale_fill_viridis() +
-  theme_minimal()
+  theme_minimal() +
+  xlim(0, 0.3)
 
 ggsave("item-histogram.png", device="png")
 ```
